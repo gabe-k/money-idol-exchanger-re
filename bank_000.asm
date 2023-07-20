@@ -164,17 +164,17 @@ JoypadTransitionInterrupt::
 
 switch_bank_and_call:
     ldh [$b0], a
-    ldh a, [$af]
+    ldh a, [CURRENT_BANK]
     push af
 
 Call_000_0066:
     ldh a, [$b0]
 
-    ldh [$af], a
+    ldh [CURRENT_BANK], a
     ld [$2000], a
     call jump_to_hl
     pop af
-    ldh [$af], a
+    ldh [CURRENT_BANK], a
     ld [$2000], a
     ret
 
