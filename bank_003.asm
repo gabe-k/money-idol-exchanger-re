@@ -45,24 +45,16 @@ jr_003_4023:
     ret
 
 ; level data start
-DB $3C
-DB $40
-DB $3C
-DB $47
-DB $3C
-DB $4E
-DB $3C
-DB $55
-DB $3C
-DB $5C
-DB $3C
-DB $63
-DB $3C
-DB $6A
-DB $3C
-DB $71
-DB $3C
-DB $78
+DW $403C
+DW $473C
+DW $4E3C
+DW $553C
+DW $5C3C
+DW $633C
+DW $6A3C
+DW $713C
+DW $783C
+
 DB $05
 DB $01
 DB $02
