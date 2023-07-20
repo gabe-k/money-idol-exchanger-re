@@ -116,7 +116,7 @@ Call_002_4081:
     ld de, $c25d
     ld a, $03
     ld hl, $4000
-    call Call_000_0061
+    call switch_bank_and_call
     ld a, $ff
     ld [$c269], a
     ld a, $09
@@ -295,7 +295,7 @@ jr_002_419c:
     ld de, $c25d
     ld a, $03
     ld hl, $4000
-    call Call_000_0061
+    call switch_bank_and_call
     ld a, $ff
     ld [$c269], a
     ld a, $09

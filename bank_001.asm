@@ -6417,7 +6417,7 @@ Call_001_5cba:
     ld [$cf0c], a
     ld a, $09
     ld hl, $5908
-    call Call_000_0061
+    call switch_bank_and_call
     ld hl, $6292
     ld de, $8000
     ld bc, $0130
@@ -6540,7 +6540,7 @@ Call_001_5d84:
     ld [$cf12], a
     ld a, $09
     ld hl, $5908
-    call Call_000_0061
+    call switch_bank_and_call
     ld hl, $6292
     ld de, $8000
     ld bc, $0130
@@ -12168,14 +12168,14 @@ jr_001_7636:
     call nz, Call_000_0f3a
     ld a, $09
     ld hl, $5908
-    call Call_000_0061
+    call switch_bank_and_call
     ld hl, $6292
     ld de, $8000
     ld bc, $0130
     call Call_000_0634
     ld a, $0a
     ld hl, $7aa4
-    call Call_000_0061
+    call switch_bank_and_call
     ld de, $77db
     ld hl, $9800
     call Call_000_0502

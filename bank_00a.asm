@@ -2660,7 +2660,7 @@ jr_00a_4c45:
     ld e, a
     ld a, $0b
     ld hl, $7704
-    call Call_000_0061
+    call switch_bank_and_call
     ld hl, $da00
     ld de, $8c40
     ld a, $40
@@ -6967,7 +6967,7 @@ jr_00a_5f3f:
     call Call_00a_62db
     ld a, $0a
     ld hl, $4000
-    call Call_000_0061
+    call switch_bank_and_call
     jp Jump_000_0150
 
 
@@ -7043,7 +7043,7 @@ jr_00a_5fc5:
     ld de, $d010
     ld a, $0e
     ld hl, $5cc2
-    call Call_000_0061
+    call switch_bank_and_call
     ld a, $ff
     ldh [$a2], a
     ld a, $c8

@@ -162,7 +162,7 @@ JoypadTransitionInterrupt::
     reti
 
 
-Call_000_0061:
+switch_bank_and_call:
     ldh [$b0], a
     ldh a, [$af]
     push af
@@ -468,7 +468,7 @@ Call_000_0205:
     call Call_000_102b
     ld a, $0c
     ld hl, $4000
-    call Call_000_0061
+    call switch_bank_and_call
     ld hl, $1230
     call Call_000_0f3a
     call Call_000_102b
@@ -3978,7 +3978,7 @@ jr_000_12ba:
     ld de, $c4c0
     ld a, $0e
     ld hl, $5b6c
-    call Call_000_0061
+    call switch_bank_and_call
     ret
 
 
@@ -3991,7 +3991,7 @@ Jump_000_12d2:
 Jump_000_12db:
     ld a, $01
     ld hl, $76ba
-    call Call_000_0061
+    call switch_bank_and_call
     ld a, [$cf29]
     inc a
     ld b, a
@@ -4097,7 +4097,7 @@ Jump_000_13a2:
 
     ld a, $0e
     ld hl, $653f
-    call Call_000_0061
+    call switch_bank_and_call
     ld hl, $cf5e
     dec [hl]
     ld a, b
@@ -4109,7 +4109,7 @@ jr_000_13b9:
     ldh [rLCDC], a
     ld a, $0a
     ld hl, $4000
-    call Call_000_0061
+    call switch_bank_and_call
     ld a, $01
     ld hl, $40a9
     jp Jump_000_0077
@@ -4141,7 +4141,7 @@ Call_000_13e7:
     call Call_000_2670
     ld a, $0b
     ld hl, $4030
-    call Call_000_0061
+    call switch_bank_and_call
     call $4c0e
     ld a, [$cf29]
     inc a
@@ -4298,7 +4298,7 @@ jr_000_150c:
     and a
     ld a, $04
     ld hl, $4000
-    call nz, Call_000_0061
+    call nz, switch_bank_and_call
     ldh a, [$bb]
     and a
     jr nz, jr_000_1534
@@ -4453,12 +4453,12 @@ Jump_000_1603:
     ld [$cf2b], a
     ld a, $0d
     ld hl, $4000
-    call Call_000_0061
+    call switch_bank_and_call
     call $4cb4
     call Call_000_266b
     ld a, $0b
     ld hl, $40af
-    call Call_000_0061
+    call switch_bank_and_call
     call $4c0e
     call Call_000_2ee7
     call Call_000_2807
@@ -4592,7 +4592,7 @@ jr_000_170d:
     and a
     ld a, $04
     ld hl, $4000
-    call nz, Call_000_0061
+    call nz, switch_bank_and_call
     ldh a, [$bb]
     and a
     jr nz, jr_000_1728
@@ -4741,7 +4741,7 @@ jr_000_17ef:
     call Call_000_063d
     ld a, $01
     ld hl, $5d84
-    call Call_000_0061
+    call switch_bank_and_call
     ld a, [$cf5c]
     add $01
     daa
@@ -4781,7 +4781,7 @@ jr_000_183a:
     ld sp, $dfff
     ld a, $0b
     ld hl, $4000
-    call Call_000_0061
+    call switch_bank_and_call
     call $4c0e
     call Call_000_2675
     ld a, [$cf2f]
@@ -4844,7 +4844,7 @@ jr_000_18bb:
     and a
     ld a, $04
     ld hl, $4000
-    call nz, Call_000_0061
+    call nz, switch_bank_and_call
     ldh a, [$bb]
     and a
     jr nz, jr_000_18d6
@@ -4892,7 +4892,7 @@ jr_000_18eb:
 
     ld a, $0a
     ld hl, $4000
-    call Call_000_0061
+    call switch_bank_and_call
     ld a, $01
     ld hl, $40a9
     jp Jump_000_0077
@@ -4901,7 +4901,7 @@ jr_000_18eb:
     ld sp, $dfff
     ld a, $0b
     ld hl, $4000
-    call Call_000_0061
+    call switch_bank_and_call
     call $4c0e
     call Call_000_2675
     ld a, [$cf2f]
@@ -4962,7 +4962,7 @@ jr_000_19a1:
     and a
     ld a, $04
     ld hl, $4000
-    call nz, Call_000_0061
+    call nz, switch_bank_and_call
     ldh a, [$bb]
     and a
     jr nz, jr_000_19bc
@@ -5015,16 +5015,16 @@ jr_000_19d1:
     call $4cea
     ld a, $0a
     ld hl, $4b26
-    call Call_000_0061
+    call switch_bank_and_call
     call $5578
     ld a, $0a
     ld hl, $4bdc
-    call Call_000_0061
+    call switch_bank_and_call
 
 Jump_000_1a25:
     ld a, $0a
     ld hl, $4a8a
-    call Call_000_0061
+    call switch_bank_and_call
     ld a, [$cf54]
     ld b, a
     ld a, [$c2c7]
@@ -5035,10 +5035,10 @@ Call_000_1a35:
 
     ld a, $0f
     ld hl, $4000
-    call Call_000_0061
+    call switch_bank_and_call
     ld a, $0a
     ld hl, $4000
-    call Call_000_0061
+    call switch_bank_and_call
     ld a, $01
     ld hl, $40a9
     jp Jump_000_0077
@@ -5047,10 +5047,10 @@ Call_000_1a35:
 jr_000_1a4f:
     ld a, $0a
     ld hl, $4000
-    call Call_000_0061
+    call switch_bank_and_call
     ld a, $0f
     ld hl, $428a
-    call Call_000_0061
+    call switch_bank_and_call
     ld a, $01
     ld hl, $40a9
     jp Jump_000_0077
