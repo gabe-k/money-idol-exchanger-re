@@ -259,7 +259,7 @@ jr_001_41e4:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_007c
+    call jump_to_hl
     ld a, $06
     call Call_000_07ce
     jr jr_001_41e4

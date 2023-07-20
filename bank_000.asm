@@ -172,7 +172,7 @@ Call_000_0066:
 
     ldh [$af], a
     ld [$2000], a
-    call Call_000_007c
+    call jump_to_hl
     pop af
     ldh [$af], a
     ld [$2000], a
@@ -183,7 +183,7 @@ Jump_000_0077:
     ldh [$af], a
     ld [$2000], a
 
-Call_000_007c:
+jump_to_hl:
     jp hl
 
 

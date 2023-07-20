@@ -3368,7 +3368,7 @@ jr_002_4f5a:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_007c
+    call jump_to_hl
     ret z
 
     cp $07
@@ -3443,7 +3443,7 @@ jr_002_4fd4:
     ld d, $01
     ld a, [$c271]
     ld c, a
-    call Call_000_007c
+    call jump_to_hl
     ld a, d
     ld [$c272], a
 
@@ -3769,7 +3769,7 @@ Call_002_51c2:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_007c
+    call jump_to_hl
     ret z
 
     bit 0, a

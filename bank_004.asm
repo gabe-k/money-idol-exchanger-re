@@ -114,7 +114,7 @@ jr_004_407c:
     ldh a, [$9f]
     ld b, a
     ld c, $01
-    call Call_000_007c
+    call jump_to_hl
     call Call_004_4129
     ld b, $02
     ldh a, [$9f]
@@ -241,7 +241,7 @@ jr_004_4129:
     ld l, a
     ldh a, [$9f]
     ld b, a
-    call Call_000_007c
+    call jump_to_hl
     jr jr_004_4129
 
 Call_004_4158:
