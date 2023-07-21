@@ -113,7 +113,7 @@ Call_002_4081:
     inc a
     ld c, a
     ld b, [hl]
-    ld de, $c25d
+    ld de, NEXT_LINE
     ld a, $03
     ld hl, copy_next_line_to_ram
     call switch_bank_and_call
@@ -292,7 +292,7 @@ jr_002_418a:
 
 jr_002_419c:
     ld b, [hl]
-    ld de, $c25d
+    ld de, NEXT_LINE
     ld a, $03
     ld hl, copy_next_line_to_ram
     call switch_bank_and_call
@@ -592,7 +592,7 @@ jr_002_42f1:
     jr nz, jr_002_42f1
 
     ld de, $c400
-    ld hl, $c25d
+    ld hl, NEXT_LINE
     ld b, $07
 
 jr_002_42ff:
