@@ -20,7 +20,7 @@ SECTION "ROM Bank $00b", ROMX[$4000], BANK[$b]
     ld hl, $6714
     ld de, $8a00
     ld bc, $01e0
-    jp Jump_000_0634
+    jp memcpy
 
 
     ld hl, $4162

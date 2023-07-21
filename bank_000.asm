@@ -1299,16 +1299,19 @@ jr_000_05fc:
     ret
 
 
+; memcpy params:
+;     hl: source
+;     de: destination
+;     bc: count
 memcpy:
-Jump_000_0634:
-jr_000_0634:
+memcpy_start:
     ld a, [hl+]
     ld [de], a
     inc de
     dec bc
     ld a, b
     or c
-    jr nz, jr_000_0634
+    jr nz, memcpy_start
 
     ret
 

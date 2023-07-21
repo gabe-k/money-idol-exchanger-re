@@ -7324,7 +7324,7 @@ jr_00e_6025:
     ld hl, $da00
     ld de, $8c00
     ld bc, $03b0
-    jp Jump_000_0634
+    jp memcpy
 
 
     ld bc, $0400
