@@ -21,7 +21,7 @@ copy_next_line_to_ram:
     ld h, a
     ld a, c
     add a
-    ld de, $402a
+    ld de, levels_table
     add e
     ld e, a
     ld a, d
@@ -36,16 +36,17 @@ copy_next_line_to_ram:
     pop de
     ld b, $07
 
-jr_003_4023:
+copy_next_line_to_ram_loop:
     ld a, [hl+]
     ld [de], a
     inc de
     dec b
-    jr nz, jr_003_4023
+    jr nz, copy_next_line_to_ram_loop
 
     ret
 
 ; level data start
+levels_table:
 DW $403C
 DW $473C
 DW $4E3C
