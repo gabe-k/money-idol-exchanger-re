@@ -23,11 +23,11 @@ SECTION "ROM Bank $00d", ROMX[$4000], BANK[$d]
     ld hl, $736b
     ld de, $8000
     ld bc, $0530
-    call Call_000_0634
+    call memcpy
     ld hl, $789b
     ld de, $8e30
     ld bc, $01d0
-    call Call_000_0634
+    call memcpy
     ld hl, $9800
     call Call_000_07c3
     ld de, $4103
@@ -59,7 +59,7 @@ jr_00d_4061:
     ld l, a
     ld de, $8600
     ld bc, $0300
-    call Call_000_0634
+    call memcpy
     ldh a, [$a0]
     ld hl, $40f3
     call Call_000_065d
@@ -68,7 +68,7 @@ jr_00d_4061:
     ld l, a
     ld de, $8900
     ld bc, $0300
-    call Call_000_0634
+    call memcpy
     ldh a, [$9f]
     ld hl, $426b
     call Call_000_065d

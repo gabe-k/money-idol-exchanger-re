@@ -8,15 +8,15 @@ SECTION "ROM Bank $00b", ROMX[$4000], BANK[$b]
     ld hl, $4162
     ld de, $8000
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld hl, $4962
     ld de, $8800
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld hl, $5162
     ld de, $9000
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld hl, $6714
     ld de, $8a00
     ld bc, $01e0
@@ -26,15 +26,15 @@ SECTION "ROM Bank $00b", ROMX[$4000], BANK[$b]
     ld hl, $4162
     ld de, $8000
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld hl, $4962
     ld de, $8800
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld hl, $5962
     ld de, $9000
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld a, [$cf29]
     ld hl, $6162
     call Call_000_065d
@@ -99,19 +99,19 @@ jr_00b_40a8:
     ld hl, $4162
     ld de, $8000
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld hl, $4962
     ld de, $8800
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld hl, $5962
     ld de, $9000
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld hl, $4142
     ld de, $90f0
     ld bc, $0020
-    call Call_000_0634
+    call memcpy
     ld a, [$cf5c]
     swap a
     and $0f

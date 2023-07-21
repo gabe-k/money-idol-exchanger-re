@@ -17,7 +17,7 @@ Jump_00a_4000:
     ld hl, $4092
     ld de, $8000
     ld bc, $0890
-    call Call_000_0634
+    call memcpy
     ld de, $4922
     ld hl, $9800
     call Call_000_0502
@@ -2384,7 +2384,7 @@ jr_00a_49e9:
     ld hl, $4e01
     ld de, $8000
     ld bc, $0e10
-    call Call_000_0634
+    call memcpy
     ld de, $5c11
     ld hl, $9800
     call Call_000_0502
@@ -6867,11 +6867,11 @@ jr_00a_5df4:
     ld hl, $62f1
     ld de, $8000
     ld bc, $0e60
-    call Call_000_0634
+    call memcpy
     ld hl, $7151
     ld de, $9000
     ld bc, $0370
-    call Call_000_0634
+    call memcpy
     ld hl, $9800
     call Call_000_07c3
     ld de, $74c1
@@ -13703,7 +13703,7 @@ jr_00a_7a9a:
     ld hl, $7ab1
     ld de, $9010
     ld bc, $04a0
-    call Call_000_0634
+    call memcpy
     ret
 
 

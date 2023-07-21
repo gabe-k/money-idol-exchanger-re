@@ -8525,7 +8525,7 @@ jr_00e_652f:
     ld hl, $65da
     ld de, $8000
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld de, $6cda
     ld hl, $9800
     call Call_000_0502

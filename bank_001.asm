@@ -15,7 +15,7 @@ SECTION "ROM Bank $001", ROMX[$4000], BANK[$1]
     ld hl, $4618
     ld de, $8000
     ld bc, $02d0
-    call Call_000_0634
+    call memcpy
     ld hl, $9800
     call Call_000_07c3
     ld hl, $4838
@@ -59,7 +59,7 @@ jr_001_405c:
     ld hl, $4300
     ld de, $8000
     ld bc, $02d0
-    call Call_000_0634
+    call memcpy
     ld hl, $9800
 
 Call_001_4081:
@@ -96,15 +96,15 @@ jr_001_40a9:
     ld hl, $487a
     ld de, $9000
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld hl, $507a
     ld de, $8800
     ld bc, $0560
-    call Call_000_0634
+    call memcpy
     ld hl, $5945
     ld de, $8000
     ld bc, $0040
-    call Call_000_0634
+    call memcpy
     ld de, $55da
     ld hl, $9800
     call Call_000_0502
@@ -5947,11 +5947,11 @@ Jump_001_5998:
 jr_001_59a4:
     ld de, $9000
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld hl, $6c7d
     ld de, $8800
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld hl, $7598
 
 jr_001_59bc:
@@ -5959,7 +5959,7 @@ jr_001_59bc:
     ld bc, $0050
 
 jr_001_59c2:
-    call Call_000_0634
+    call memcpy
     ld de, $7430
     ld hl, $9800
     call Call_000_0502
@@ -6421,7 +6421,7 @@ Call_001_5cba:
     ld hl, $6292
     ld de, $8000
     ld bc, $0130
-    call Call_000_0634
+    call memcpy
     ld hl, $c100
     ld b, $30
     xor a
@@ -6544,7 +6544,7 @@ Call_001_5d84:
     ld hl, $6292
     ld de, $8000
     ld bc, $0130
-    call Call_000_0634
+    call memcpy
     ld de, $6102
     ld hl, $9800
     call Call_000_0502
@@ -12172,7 +12172,7 @@ jr_001_7636:
     ld hl, $6292
     ld de, $8000
     ld bc, $0130
-    call Call_000_0634
+    call memcpy
     ld a, $0a
     ld hl, $7aa4
     call switch_bank_and_call

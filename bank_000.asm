@@ -1299,7 +1299,7 @@ jr_000_05fc:
     ret
 
 
-Call_000_0634:
+memcpy:
 Jump_000_0634:
 jr_000_0634:
     ld a, [hl+]
@@ -3321,7 +3321,7 @@ Call_000_0fe5:
     ldh [rBGP], a
     ld de, $8800
     ld bc, $1000
-    call Call_000_0634
+    call memcpy
     ld hl, $9800
     ld de, $000c
     ld a, $80
@@ -9312,14 +9312,14 @@ Call_000_30c3:
     ld h, [hl]
     ld l, a
     ld de, $9010
-    call Call_000_0634
+    call memcpy
     pop bc
     ld a, b
     or c
     jr z, jr_000_30ef
 
     ld de, $8800
-    call Call_000_0634
+    call memcpy
 
 jr_000_30ef:
     ldh a, [$9f]
@@ -9334,7 +9334,7 @@ jr_000_30ef:
     ld hl, $3237
     ld bc, $0050
     ld de, $8fb0
-    call Call_000_0634
+    call memcpy
     ld de, $3287
     ld hl, $99a0
     ld c, $05

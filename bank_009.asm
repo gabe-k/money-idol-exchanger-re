@@ -5826,11 +5826,11 @@ jr_009_589a:
     ld hl, $5921
     ld de, $9000
     ld bc, $0800
-    call Call_000_0634
+    call memcpy
     ld hl, $6121
     ld de, $8800
     ld bc, $0780
-    call Call_000_0634
+    call memcpy
     ret
 
 

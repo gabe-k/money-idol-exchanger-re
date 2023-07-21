@@ -15,7 +15,7 @@ SECTION "ROM Bank $00f", ROMX[$4000], BANK[$f]
     ld hl, $4547
     ld de, $8000
     ld bc, $0a60
-    call Call_000_0634
+    call memcpy
     ld de, $4fa7
     ld hl, $9800
     call Call_000_0502
@@ -384,7 +384,7 @@ Call_00f_4251:
     ld hl, $4547
     ld de, $8000
     ld bc, $0a60
-    call Call_000_0634
+    call memcpy
     ld de, $4fa7
     ld hl, $9800
     call Call_000_0502
