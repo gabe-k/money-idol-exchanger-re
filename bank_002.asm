@@ -115,7 +115,7 @@ Call_002_4081:
     ld b, [hl]
     ld de, $c25d
     ld a, $03
-    ld hl, $4000
+    ld hl, copy_next_line_to_ram
     call switch_bank_and_call
     ld a, $ff
     ld [$c269], a
@@ -294,7 +294,7 @@ jr_002_419c:
     ld b, [hl]
     ld de, $c25d
     ld a, $03
-    ld hl, $4000
+    ld hl, copy_next_line_to_ram
     call switch_bank_and_call
     ld a, $ff
     ld [$c269], a

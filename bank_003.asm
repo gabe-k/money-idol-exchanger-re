@@ -5,6 +5,7 @@
 
 SECTION "ROM Bank $003", ROMX[$4000], BANK[$3]
 
+copy_next_line_to_ram:
     push de
     ld d, b
     ld l, b

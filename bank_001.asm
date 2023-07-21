@@ -12,9 +12,9 @@ SECTION "ROM Bank $001", ROMX[$4000], BANK[$1]
     ld hl, $1170
     and a
     call nz, Call_000_0f3a
-    ld hl, $4618
-    ld de, $8000
-    ld bc, $02d0
+    ld hl, $4618 ; source
+    ld de, $8000 ; dest
+    ld bc, $02d0 ; count
     call memcpy
     ld hl, $9800
     call Call_000_07c3
@@ -56,9 +56,9 @@ jr_001_405c:
     call Call_000_05e9
     di
     call Call_000_04e1
-    ld hl, $4300
-    ld de, $8000
-    ld bc, $02d0
+    ld hl, $4300 ; source
+    ld de, $8000 ; dest
+    ld bc, $02d0 ; count
     call memcpy
     ld hl, $9800
 
@@ -93,17 +93,17 @@ jr_001_40a9:
     and a
     call nz, Call_000_0f3a
     call Call_000_05e9
-    ld hl, $487a
-    ld de, $9000
-    ld bc, $0800
+    ld hl, $487a ; source
+    ld de, $9000 ; dest
+    ld bc, $0800 ; count
     call memcpy
-    ld hl, $507a
-    ld de, $8800
-    ld bc, $0560
+    ld hl, $507a ; source
+    ld de, $8800 ; dest
+    ld bc, $0560 ; count
     call memcpy
-    ld hl, $5945
-    ld de, $8000
-    ld bc, $0040
+    ld hl, $5945 ; source
+    ld de, $8000 ; dest
+    ld bc, $0040 ; count
     call memcpy
     ld de, $55da
     ld hl, $9800
@@ -5942,21 +5942,21 @@ Jump_001_5998:
     ld [$cf14], a
     ld [$cf2e], a
     ldh [$a0], a
-    ld hl, $647d
+    ld hl, $647d ; source
 
 jr_001_59a4:
-    ld de, $9000
-    ld bc, $0800
+    ld de, $9000 ; dest
+    ld bc, $0800 ; count
     call memcpy
-    ld hl, $6c7d
-    ld de, $8800
-    ld bc, $0800
+    ld hl, $6c7d ; source
+    ld de, $8800 ; dest
+    ld bc, $0800 ; count
     call memcpy
-    ld hl, $7598
+    ld hl, $7598 ; source
 
 jr_001_59bc:
-    ld de, $8000
-    ld bc, $0050
+    ld de, $8000 ; dest
+    ld bc, $0050 ; count
 
 jr_001_59c2:
     call memcpy
@@ -6418,9 +6418,9 @@ Call_001_5cba:
     ld a, $09
     ld hl, $5908
     call switch_bank_and_call
-    ld hl, $6292
-    ld de, $8000
-    ld bc, $0130
+    ld hl, $6292 ; source
+    ld de, $8000 ; dest
+    ld bc, $0130 ; count
     call memcpy
     ld hl, $c100
     ld b, $30
@@ -6541,9 +6541,9 @@ Call_001_5d84:
     ld a, $09
     ld hl, $5908
     call switch_bank_and_call
-    ld hl, $6292
-    ld de, $8000
-    ld bc, $0130
+    ld hl, $6292 ; source
+    ld de, $8000 ; dest
+    ld bc, $0130 ; count
     call memcpy
     ld de, $6102
     ld hl, $9800
@@ -12169,9 +12169,9 @@ jr_001_7636:
     ld a, $09
     ld hl, $5908
     call switch_bank_and_call
-    ld hl, $6292
-    ld de, $8000
-    ld bc, $0130
+    ld hl, $6292 ; source
+    ld de, $8000 ; dest
+    ld bc, $0130 ; count
     call memcpy
     ld a, $0a
     ld hl, $7aa4
