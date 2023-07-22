@@ -12006,7 +12006,7 @@ jr_00d_7215:
 
 jr_00d_7217:
     ld a, $00
-    jp $ff80
+    jp DMA_COPY_HIGH_RAM
 
 
     daa

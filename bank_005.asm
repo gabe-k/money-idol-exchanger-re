@@ -12528,7 +12528,7 @@ Jump_005_74ff:
     ld a, l
     add e
     cp l
-    jp $ff80
+    jp DMA_COPY_HIGH_RAM
 
 
     ret nz

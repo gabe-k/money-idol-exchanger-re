@@ -332,8 +332,8 @@ HeaderGlobalChecksum::
 
 start:
     ld sp, $dfff            ; set the initial stack pointer
-    call Call_000_05ec
-    call Call_000_05c3
+    call Call_000_05ec      ; set up interrupt registers
+    call copy_dma_function_to_high_ram
     ld d, $00
     ld hl, $c000
     ld bc, $1f7f
@@ -505,7 +505,7 @@ Jump_000_028c:
     or a
     jr z, jr_000_0297
 
-    call $ff80
+    call DMA_COPY_HIGH_RAM
     xor a
     ldh [$96], a
 
@@ -1164,28 +1164,28 @@ jr_000_05c2:
     ret
 
 
-Call_000_05c3:
-    ld c, $80
-    ld b, $0a
-    ld hl, $05d1
+copy_dma_function_to_high_ram:
+    ld c, DMA_COPY_HIGH_RAM_LOW ; destination: 0xff80
+    ld b, $0a                   ; length: 10 bytes
+    ld hl, dma_to_ram           ; source: 0x05d1
 
-jr_000_05ca:
+copy_dma_function_to_high_ram_loop:
     ld a, [hl+]
     ld [c], a
     inc c
     dec b
-    jr nz, jr_000_05ca
+    jr nz, copy_dma_function_to_high_ram_loop
 
     ret
 
-
-    ld a, $c0
+dma_to_ram:
+    ld a, $c0                   ; RAM base (0xC000)
     ldh [rDMA], a
-    ld a, $28
+    ld a, $28                   ; spin for 40 cycles (160 ms)
 
-jr_000_05d7:
+dma_to_ram_loop:
     dec a
-    jr nz, jr_000_05d7
+    jr nz, dma_to_ram_loop
 
     ret
 
