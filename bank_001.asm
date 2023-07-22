@@ -1165,6 +1165,7 @@ Call_001_44fc:
     inc h
     inc h
     inc l
+; start of VRAM data
     nop
     nop
 
@@ -9508,7 +9509,7 @@ jr_001_6a53:
     ei
     ld hl, $0277
     rst $38
-    call nz, Call_000_00ff
+    call nz, $00ff
     rst $38
     nop
     rst $38
@@ -11836,7 +11837,7 @@ jr_001_7547:
     nop
     nop
     db $db
-    call c, Call_000_00dd
+    call c, $00dd
     nop
     nop
     nop

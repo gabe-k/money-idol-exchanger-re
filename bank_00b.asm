@@ -4068,7 +4068,7 @@ jr_00b_50be:
     ld d, h
     ld d, h
     ld d, h
-    call c, Call_000_00dc
+    call c, $00dc
     nop
     nop
     nop
@@ -11626,7 +11626,7 @@ jr_00b_6f1e:
     call z, $e3dc
     add sp, -$0f
     or e
-    call c, Call_000_00ff
+    call c, $00ff
     ret c
 
     ccf

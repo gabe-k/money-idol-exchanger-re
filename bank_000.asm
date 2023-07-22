@@ -284,52 +284,8 @@ jr_000_00da:
     nop
     nop
 
-Call_000_00dc:
-    rst $38
+DS 36, $FF
 
-Call_000_00dd:
-    rst $38
-    rst $38
-    rst $38
-
-Call_000_00e0:
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-
-Call_000_00fc:
-    rst $38
-    rst $38
-    rst $38
-
-Call_000_00ff:
-Jump_000_00ff:
-    rst $38
 
 Boot::
     nop

@@ -752,7 +752,7 @@ jr_008_4292:
     db $fc
     inc bc
     inc a
-    jp Jump_000_00ff
+    jp $00ff
 
 
     rst $38

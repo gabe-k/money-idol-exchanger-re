@@ -10551,7 +10551,7 @@ jr_006_6c97:
     rst $38
     ccf
     rst $38
-    call c, Call_000_00e0
+    call c, $00e0
     nop
     adc b
     nop

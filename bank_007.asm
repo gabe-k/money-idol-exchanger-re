@@ -6952,7 +6952,7 @@ jr_007_5cab:
     db $10
     dec hl
     dec sp
-    call z, Call_000_00ff
+    call z, $00ff
     rst $38
     ld [hl], b
     rst $38
@@ -10015,7 +10015,7 @@ jr_007_69dc:
     rlca
     cp l
     ld a, [hl]
-    jp Jump_000_00ff
+    jp $00ff
 
 
     rst $38

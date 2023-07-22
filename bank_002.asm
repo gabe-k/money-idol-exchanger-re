@@ -7972,7 +7972,7 @@ jr_002_652d:
     ld bc, $0fc3
     rrca
     ld e, $0e
-    call nz, Call_000_00fc
+    call nz, $00fc
     nop
     nop
     nop
@@ -8145,7 +8145,7 @@ jr_002_65cb:
     db $eb
     rst $20
     ld e, $0e
-    call nz, Call_000_00fc
+    call nz, $00fc
     nop
     nop
     nop
@@ -8317,7 +8317,7 @@ jr_002_666e:
     ld c, $0e
     jr jr_002_66c5
 
-    call nz, Call_000_00fc
+    call nz, $00fc
     nop
     dec sp
     dec sp
