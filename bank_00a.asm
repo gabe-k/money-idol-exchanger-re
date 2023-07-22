@@ -6968,7 +6968,7 @@ jr_00a_5f3f:
     ld a, $0a
     ld hl, $4000
     call switch_bank_and_call
-    jp Jump_000_0150
+    jp start
 
 
 Call_00a_5f6b:

@@ -289,7 +289,7 @@ DS 36, $FF
 
 Boot::
     nop
-    jp Jump_000_0150
+    jp start
 
 
 HeaderLogo::
@@ -330,18 +330,18 @@ HeaderComplementCheck::
 HeaderGlobalChecksum::
     db $07, $25
 
-Jump_000_0150:
-    ld sp, $dfff
+start:
+    ld sp, $dfff            ; set the initial stack pointer
     call Call_000_05ec
     call Call_000_05c3
     ld d, $00
     ld hl, $c000
     ld bc, $1f7f
-    call Call_000_04d3
+    call memset             ; zero out RAM
     ld d, $00
     ld hl, $ff8a
     ld bc, $007f
-    call Call_000_04d3
+    call memset             ; zero out high RAM
     call Call_000_07db
     xor a
     ldh [rBGP], a
@@ -966,14 +966,14 @@ jr_000_04c8:
     ret
 
 
-Call_000_04d3:
-jr_000_04d3:
+memset:
+memset_start:
     ld a, d
     ld [hl+], a
     dec bc
     ld a, b
     or c
-    jr nz, jr_000_04d3
+    jr nz, memset_start
 
     ret
 
