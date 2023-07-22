@@ -5045,7 +5045,7 @@ Call_000_1a77:
 
     ld a, $7f
     ld [$c28f], a
-    ld hl, $c400
+    ld hl, GAME_BOARD
     ld de, $c600
     ld b, $86
 
@@ -5129,7 +5129,7 @@ Call_000_1add:
 
     ld a, $7f
     ld [$c290], a
-    ld hl, $c400
+    ld hl, GAME_BOARD
     ld de, $c600
     ld b, $86
 
@@ -5209,7 +5209,7 @@ jr_000_1b4b:
     ld [$c293], a
     ret nz
 
-    ld hl, $c400
+    ld hl, GAME_BOARD
     ld c, $09
 
 jr_000_1b58:
@@ -9140,7 +9140,7 @@ Call_000_3004:
 
 Call_000_302c:
     ld b, $86
-    ld hl, $c400
+    ld hl, GAME_BOARD
 
 jr_000_3031:
     ld a, [hl]

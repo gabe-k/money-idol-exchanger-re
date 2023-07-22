@@ -10,7 +10,7 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     ld c, $08
     ld [$060e], sp
     sub b
-    ld hl, $c400
+    ld hl, GAME_BOARD
     xor a
 
 jr_002_400e:
@@ -591,7 +591,7 @@ jr_002_42f1:
     dec b
     jr nz, jr_002_42f1
 
-    ld de, $c400
+    ld de, GAME_BOARD
     ld hl, NEXT_LINE
     ld b, $07
 
@@ -626,7 +626,7 @@ jr_002_4318:
     dec c
     jr nz, jr_002_4316
 
-    ld de, $c400
+    ld de, GAME_BOARD
     ld hl, $c790
     ld bc, $c7a0
     ld a, [de]

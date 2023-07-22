@@ -67,7 +67,7 @@ jr_004_4065:
     and a
     ret nz
 
-    ld hl, $c400
+    ld hl, GAME_BOARD
     ld de, $c500
     ld b, $87
 
