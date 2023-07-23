@@ -33,7 +33,7 @@ SECTION "ROM Bank $001", ROMX[$4000], BANK[$1]
     ld [$cf1c], a
     ld [$cf1d], a
     ld a, $d1
-    call Call_000_03da
+    call set_pal_and_lcd_control
     call Call_000_0369
     xor a
     ldh [rIF], a
@@ -48,7 +48,7 @@ jr_001_405c:
     call Call_000_055e
     ldh a, [$8c]
     bit 0, a
-    jr nz, jr_001_40a9
+    jr nz, copy_stuff_into_vram_01
 
     dec b
     jr nz, jr_001_405c
@@ -68,7 +68,7 @@ Call_001_4081:
     ld de, $98c3
     call Call_000_0683
     ld a, $d1
-    call Call_000_03da
+    call set_pal_and_lcd_control
     call Call_000_0369
     call Call_000_047e
     ld b, $78
@@ -78,13 +78,12 @@ jr_001_409a:
     call Call_000_055e
     ldh a, [$8c]
     bit 0, a
-    jr nz, jr_001_40a9
+    jr nz, copy_stuff_into_vram_01
 
     dec b
     jr nz, jr_001_409a
 
-Jump_001_40a9:
-jr_001_40a9:
+copy_stuff_into_vram_01: ; for reference: 0x40a9
     ld a, $01
     ldh [$a1], a
     call Call_000_03b4
@@ -96,20 +95,20 @@ jr_001_40a9:
     ld hl, $487a ; source
     ld de, $9000 ; dest
     ld bc, $0800 ; count
-    call memcpy
+    call memcpy  ; copy the logo tiles
     ld hl, $507a ; source
     ld de, $8800 ; dest
     ld bc, $0560 ; count
-    call memcpy
+    call memcpy  ; copy the font tiles
     ld hl, $5945 ; source
     ld de, $8000 ; dest
     ld bc, $0040 ; count
-    call memcpy
+    call memcpy  ; some other times
     ld de, $55da
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     ld a, $c3
-    call Call_000_03da
+    call set_pal_and_lcd_control
     ld a, $02
     call Call_000_063d
     xor a
@@ -200,7 +199,7 @@ jr_001_4172:
     call nz, Call_000_0f3a
     ld de, $5742
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     ldh a, [$c4]
     and a
     ld hl, $5901
@@ -231,7 +230,7 @@ jr_001_41c6:
     ld de, $9960
     call Call_000_06a5
     ld a, $c3
-    call Call_000_03da
+    call set_pal_and_lcd_control
     ld a, $14
     ld [$c100], a
     ld a, $08
@@ -371,7 +370,7 @@ jr_001_429e:
 
     pop af
     call Call_000_04e1
-    jp Jump_001_40a9
+    jp copy_stuff_into_vram_01
 
 
     inc d
@@ -5963,7 +5962,7 @@ jr_001_59c2:
     call memcpy
     ld de, $7430
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     call Call_000_04e1
     ld hl, $6097
     ld de, $c100
@@ -5999,7 +5998,7 @@ jr_001_5a03:
     and a
     call nz, Call_000_0f3a
     ld a, $c3
-    call Call_000_03da
+    call set_pal_and_lcd_control
     ld a, [$cf2f]
     and a
     call z, Call_000_0095
@@ -6142,7 +6141,7 @@ jr_001_5a82:
     and a
     call nz, Call_000_0f3a
     ld a, $c3
-    call Call_000_03da
+    call set_pal_and_lcd_control
     ld b, $6e
 
 jr_001_5b0b:
@@ -6166,7 +6165,7 @@ jr_001_5b1c:
     call nz, Call_000_0f3a
     ld a, $02
     ld hl, $12d2
-    jp Jump_000_0077
+    jp switch_bank_and_jump
 
 
     add d
@@ -6250,7 +6249,7 @@ jr_001_5b1c:
     call Call_001_5cba
     ld a, $02
     ld hl, $1927
-    jp Jump_000_0077
+    jp switch_bank_and_jump
 
 
     ld a, [$cf15]
@@ -6376,7 +6375,7 @@ jr_001_5c4d:
     call Call_001_5d84
     ld a, $02
     ld hl, $15de
-    jp Jump_000_0077
+    jp switch_bank_and_jump
 
 
 Jump_001_5c7c:
@@ -6409,7 +6408,7 @@ jr_001_5c7c:
     call Call_001_5cba
     ld a, $02
     ld hl, $1841
-    jp Jump_000_0077
+    jp switch_bank_and_jump
 
 
 Call_001_5cba:
@@ -6438,7 +6437,7 @@ jr_001_5cdb:
 
     ld de, $6102
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     xor a
     ldh [$9f], a
     ldh [$a0], a
@@ -6449,7 +6448,7 @@ jr_001_5cdb:
     and a
     call nz, Call_000_0f3a
     ld a, $c3
-    call Call_000_03da
+    call set_pal_and_lcd_control
 
 jr_001_5d06:
     call Call_000_055e
@@ -6548,7 +6547,7 @@ Call_001_5d84:
     call memcpy
     ld de, $6102
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     xor a
     ldh [$a5], a
     ldh [$a2], a
@@ -6582,7 +6581,7 @@ jr_001_5db9:
     call Call_001_63c2
     call Call_001_63ea
     ld a, $c3
-    call Call_000_03da
+    call set_pal_and_lcd_control
     ld a, [$cf15]
     ld [$cf16], a
     xor a
@@ -12179,7 +12178,7 @@ jr_001_7636:
     call switch_bank_and_call
     ld de, $77db
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     ld a, [$cf29]
     ldh [$a6], a
     ld b, a
@@ -12212,7 +12211,7 @@ jr_001_771d:
     ldh [$a2], a
     call Call_001_7762
     ld a, $c3
-    call Call_000_03da
+    call set_pal_and_lcd_control
     ld b, $64
 
 jr_001_772e:

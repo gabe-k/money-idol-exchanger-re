@@ -32,7 +32,7 @@ SECTION "ROM Bank $00d", ROMX[$4000], BANK[$d]
     call Call_000_07c3
     ld de, $4103
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     xor a
     ld [$cf0b], a
     ld [$cf0c], a
@@ -94,7 +94,7 @@ Call_00d_40b3:
     call Call_000_063d
     call Call_000_047e
     ld a, $d3
-    call Call_000_03da
+    call set_pal_and_lcd_control
     call Call_000_0369
     ld b, $32
 

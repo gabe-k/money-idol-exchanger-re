@@ -18,7 +18,7 @@ SECTION "ROM Bank $00f", ROMX[$4000], BANK[$f]
     call memcpy
     ld de, $4fa7
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     xor a
     ld [$cf0b], a
     ld [$cf0c], a
@@ -103,7 +103,7 @@ jr_00f_4072:
     and a
     call nz, Call_000_0f3a
     ld a, $d3
-    call Call_000_03da
+    call set_pal_and_lcd_control
     call Call_000_0369
     call Call_00f_40f9
     ld a, [$d049]
@@ -387,7 +387,7 @@ Call_00f_4251:
     call memcpy
     ld de, $4fa7
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     xor a
     ld [$cf0b], a
     ld [$cf0c], a
@@ -415,7 +415,7 @@ Call_00f_4251:
     and a
     call nz, Call_000_0f3a
     ld a, $d1
-    call Call_000_03da
+    call set_pal_and_lcd_control
     call Call_000_0369
     ld bc, $0096
 

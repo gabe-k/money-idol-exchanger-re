@@ -20,7 +20,7 @@ Jump_00a_4000:
     call memcpy
     ld de, $4922
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     xor a
     ld [$cf0b], a
     ld [$cf0c], a
@@ -34,7 +34,7 @@ Jump_00a_4000:
     ld a, $06
     call Call_000_063d
     ld a, $d1
-    call Call_000_03da
+    call set_pal_and_lcd_control
     call Call_000_0369
     ld hl, $01d6
 
@@ -2387,7 +2387,7 @@ jr_00a_49e9:
     call memcpy
     ld de, $5c11
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     call Call_00a_5d79
     xor a
     ld [$cf0b], a
@@ -2406,7 +2406,7 @@ jr_00a_49e9:
     and a
     call nz, Call_000_0f3a
     ld a, $d1
-    call Call_000_03da
+    call set_pal_and_lcd_control
     call Call_000_0369
     ld bc, $0064
 
@@ -6876,7 +6876,7 @@ jr_00a_5df4:
     call Call_000_07c3
     ld de, $74c1
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     xor a
     ld [$cf0b], a
     ld [$cf0c], a
@@ -6908,7 +6908,7 @@ jr_00a_5edd:
     ld a, $10
     call Call_000_063d
     ld a, $c3
-    call Call_000_03da
+    call set_pal_and_lcd_control
     call Call_000_0369
 
 jr_00a_5ef1:

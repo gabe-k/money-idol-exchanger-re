@@ -168,17 +168,17 @@ switch_bank_and_call:
     push af
     ldh a, [$b0]
     ldh [CURRENT_BANK], a
-    ld [$2000], a
+    ld [MBC_BANK_SELECT], a
     call jump_to_hl
     pop af
     ldh [CURRENT_BANK], a
-    ld [$2000], a
+    ld [MBC_BANK_SELECT], a
     ret
 
 
-Jump_000_0077:
-    ldh [$af], a
-    ld [$2000], a
+switch_bank_and_jump:
+    ldh [CURRENT_BANK], a
+    ld [MBC_BANK_SELECT], a
 
 jump_to_hl:
     jp hl
@@ -784,7 +784,7 @@ jr_000_03b6:
     ret
 
 
-Call_000_03da:
+set_pal_and_lcd_control:
     ldh [rLCDC], a
     ei
     call Call_000_0369
@@ -1007,7 +1007,7 @@ Call_000_04fe:
     ret
 
 
-Call_000_0502:
+copy_tile_map_20x18:
     ld c, $12
 
 Call_000_0504:
@@ -3973,7 +3973,7 @@ Jump_000_12db:
     and a
     call nz, Call_000_0f3a
     ld a, $c3
-    call Call_000_03da
+    call set_pal_and_lcd_control
     call Call_000_13cd
     call Call_000_03b4
     call Call_000_05e9
@@ -4023,7 +4023,7 @@ jr_000_134b:
     and a
     call nz, Call_000_0f3a
     ld a, $c3
-    call Call_000_03da
+    call set_pal_and_lcd_control
     call Call_000_13cd
     call Call_000_03b4
     call Call_000_05e9
@@ -4043,7 +4043,7 @@ jr_000_134b:
 
     ld a, $0a
     ld hl, $5e88
-    jp Jump_000_0077
+    jp switch_bank_and_jump
 
 
 Jump_000_13a2:
@@ -4068,7 +4068,7 @@ jr_000_13b9:
     call switch_bank_and_call
     ld a, $01
     ld hl, $40a9
-    jp Jump_000_0077
+    jp switch_bank_and_jump
 
 
 Call_000_13cd:
@@ -4131,7 +4131,7 @@ Call_000_13e7:
     ld [$c2cc], a
     ld a, $e7
     ei
-    call Call_000_03da
+    call set_pal_and_lcd_control
     ld b, $03
 
 jr_000_1443:
@@ -4429,7 +4429,7 @@ Jump_000_1603:
 jr_000_1639:
     ld a, $e7
     ei
-    call Call_000_03da
+    call set_pal_and_lcd_control
     xor a
     ld [$cf13], a
     ldh [rSB], a
@@ -4750,7 +4750,7 @@ jr_000_183a:
     ld [$c2c0], a
     ld a, $e7
     ei
-    call Call_000_03da
+    call set_pal_and_lcd_control
     call $4cc2
 
 Jump_000_186d:
@@ -4851,10 +4851,10 @@ jr_000_18eb:
     call switch_bank_and_call
     ld a, $01
     ld hl, $40a9
-    jp Jump_000_0077
+    jp switch_bank_and_jump
 
 
-    ld sp, $dfff
+    ld sp, $dfff              ; set the stack pointer back to base
     ld a, $0b
     ld hl, $4000
     call switch_bank_and_call ; calls copy_stuff_into_vram_0b
@@ -4870,7 +4870,7 @@ jr_000_18eb:
     ld [$c2c0], a
     ld a, $e7
     ei
-    call Call_000_03da
+    call set_pal_and_lcd_control
     call $4cc2
 
 Jump_000_1953:
@@ -4997,7 +4997,7 @@ Call_000_1a35:
     call switch_bank_and_call
     ld a, $01
     ld hl, $40a9
-    jp Jump_000_0077
+    jp switch_bank_and_jump
 
 
 jr_000_1a4f:
@@ -5009,7 +5009,7 @@ jr_000_1a4f:
     call switch_bank_and_call
     ld a, $01
     ld hl, $40a9
-    jp Jump_000_0077
+    jp switch_bank_and_jump
 
 
     ld d, c

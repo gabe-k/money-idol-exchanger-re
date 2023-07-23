@@ -8528,7 +8528,7 @@ jr_00e_652f:
     call memcpy
     ld de, $6cda
     ld hl, $9800
-    call Call_000_0502
+    call copy_tile_map_20x18
     ld hl, $6e42
     ld a, [$cf5e]
     add a
@@ -8548,7 +8548,7 @@ jr_00e_652f:
     call Call_000_04e1
     call Call_000_047e
     ld a, $d1
-    call Call_000_03da
+    call set_pal_and_lcd_control
 
 jr_00e_6591:
     call Call_000_0369
