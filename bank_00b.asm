@@ -5,6 +5,7 @@
 
 SECTION "ROM Bank $00b", ROMX[$4000], BANK[$b]
 
+copy_stuff_into_vram_0b:
     ld hl, $4162
     ld de, $8000
     ld bc, $0800
@@ -9050,7 +9051,7 @@ Jump_00b_63ef:
     ld h, [hl]
     sub h
     ld h, [hl]
-    call nc, Call_000_0066
+    call nc, $66
     nop
     nop
     rrca

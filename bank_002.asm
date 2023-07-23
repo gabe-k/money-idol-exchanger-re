@@ -147,7 +147,7 @@ jr_002_40b5:
     ld b, a
     ld a, [$c2a6]
     or b
-    jr nz, jr_002_4114
+    jr nz, new_line_something_1
 
     ld a, [$c29b]
     and a
@@ -196,7 +196,7 @@ jr_002_4110:
     xor a
     ld [$c29b], a
 
-jr_002_4114:
+new_line_something_1:
     ld a, [$c264]
     ld e, a
     ld a, [$c265]
@@ -293,7 +293,7 @@ jr_002_418a:
 jr_002_419c:
     ld b, [hl]
     ld de, NEXT_LINE
-    ld a, $03
+    ld a, $03                       ; bank 3
     ld hl, copy_next_line_to_ram
     call switch_bank_and_call
     ld a, $ff

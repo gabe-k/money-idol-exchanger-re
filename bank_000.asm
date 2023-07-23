@@ -166,10 +166,7 @@ switch_bank_and_call:
     ldh [$b0], a
     ldh a, [CURRENT_BANK]
     push af
-
-Call_000_0066:
     ldh a, [$b0]
-
     ldh [CURRENT_BANK], a
     ld [$2000], a
     call jump_to_hl
@@ -4762,7 +4759,7 @@ Jump_000_186d:
     call Call_000_1d26
     call Call_000_047e
     call Call_000_2195
-    call $4114
+    call new_line_something_1
     call $42cb
     call $4472
     call $4dc9
@@ -4860,7 +4857,7 @@ jr_000_18eb:
     ld sp, $dfff
     ld a, $0b
     ld hl, $4000
-    call switch_bank_and_call
+    call switch_bank_and_call ; calls copy_stuff_into_vram_0b
     call $4c0e
     call Call_000_2675
     ld a, [$cf2f]
@@ -4882,7 +4879,7 @@ Jump_000_1953:
     call Call_000_1d26
     call Call_000_047e
     call Call_000_2195
-    call $4114
+    call new_line_something_1
     call $42cb
     call $4472
     call $4dc9
