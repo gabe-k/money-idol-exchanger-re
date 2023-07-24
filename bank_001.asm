@@ -182,7 +182,7 @@ jr_001_4156:
     call Call_000_03b4
     call Call_000_05e9
     call Call_000_04e1
-    jp Jump_001_5998
+    jp copy_menu_tiles_into_vram
 
 
 jr_001_4172:
@@ -5913,16 +5913,16 @@ jr_001_5976:
 
 jr_001_5979:
     ld h, b
-    jr jr_001_59bc
+    jr $59bc
 
 jr_001_597c:
     jr c, @+$42
 
     jr c, @+$42
 
-    jr c, jr_001_59c2
+    jr c, $59c2
 
-    jr c, jr_001_59a4
+    jr c, $59a4
 
     db $10
 
@@ -5937,29 +5937,23 @@ Jump_001_5985:
     call Call_000_03b4
     call Call_000_05e9
 
-Jump_001_5998:
+copy_menu_tiles_into_vram:
     xor a
     ld [$cf14], a
     ld [$cf2e], a
     ldh [$a0], a
     ld hl, $647d ; source
-
-jr_001_59a4:
     ld de, $9000 ; dest
     ld bc, $0800 ; count
-    call memcpy
+    call memcpy  ; copy stuff to vram
     ld hl, $6c7d ; source
     ld de, $8800 ; dest
     ld bc, $0800 ; count
-    call memcpy
+    call memcpy  ; copy stuff to vram
     ld hl, $7598 ; source
-
-jr_001_59bc:
     ld de, $8000 ; dest
     ld bc, $0050 ; count
-
-jr_001_59c2:
-    call memcpy
+    call memcpy  ; copy stuff to vram
     ld de, $7430
     ld hl, $9800
     call copy_tile_map_20x18
